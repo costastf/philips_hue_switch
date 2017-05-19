@@ -1,5 +1,6 @@
 {"network_ssid": "NETWORK_SSID",
  "network_password": "NETWORK_PASSWORD",
+ "network_reset_timeout": 30,
  "hue_bridge_ip": "HUE_BRIDGE_IP",
  "hue_user_token": "HUE_USER_TOKEN",
  "lamp_name": "LAMP_NAME"}

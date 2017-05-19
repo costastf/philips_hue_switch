@@ -24,8 +24,12 @@ name = configuration.get('lamp_name')
 
 lamp = Lamp(bridge_ip, token, name)
 
-# switch is connected to pin 0 and we start it pulled up
-switch = Pin(0, Pin.IN, pull=Pin.PULL_UP)
+# switch is connected to pin 0 and we start it pulled up if wemos d1
+# switch = Pin(0, Pin.IN, pull=Pin.PULL_UP)
+
+# for esp8266 01s boards a pull up resistor is required on d0 so the board
+# never boots in flashing mode even if the switch is open.
+switch = Pin(0, Pin.IN)  # pull up resistor required on pin
 initial_state = switch.value()
 print('Current switch state is {}'.format(initial_state))
 
