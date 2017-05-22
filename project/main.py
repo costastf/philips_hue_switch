@@ -14,33 +14,60 @@
 #
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
+import machine
 from machine import Pin
 from library import Lamp
 import time
 
-bridge_ip = configuration.get('hue_bridge_ip')
-token = configuration.get('hue_user_token')
-name = configuration.get('lamp_name')
+exception_timeout = configuration.get('exception_reset_timeout')
 
-lamp = Lamp(bridge_ip, token, name)
 
-# switch is connected to pin 0 and we start it pulled up if wemos d1
-# switch = Pin(0, Pin.IN, pull=Pin.PULL_UP)
-
-# for esp8266 01s boards a pull up resistor is required on d0 so the board
-# never boots in flashing mode
-switch = Pin(3, Pin.IN, pull=Pin.PULL_UP)  # using RX pin as input so we don't
-# mess with the booting process
-initial_state = switch.value()
-print('Current switch state is {}'.format(initial_state))
-
-while True:
+def get_switch():
     try:
-        current_state = switch.value()
-        if not current_state == initial_state:
-            lamp.toggle()
-            initial_state = current_state
-        time.sleep_ms(300)
+        pin_number = configuration.get('pin_number')
+        pin_supports_pull_up = configuration.get('pin_supports_pull_up')
+        args = [pin_number, Pin.IN]
+        kwargs = {}
+        if pin_supports_pull_up:
+            kwargs.update({'pull': Pin.PULL_UP})
+        pin = Pin(*args, **kwargs)
+        return pin
     except Exception as e:
-        print('Caught exception {}, waiting two seconds'.format(e))
-        time.sleep(2)
+        print(('Caught exception, {}'
+               'resetting in {} seconds...').format(e, exception_timeout))
+        time.sleep(exception_timeout)
+        machine.reset()
+
+
+def main():
+    try:
+        bridge_ip = configuration.get('hue_bridge_ip')
+        token = configuration.get('hue_user_token')
+        name = configuration.get('lamp_name')
+
+        lamp = Lamp(bridge_ip, token, name)
+        switch = get_switch()
+        initial_state = switch.value()
+        print('Current switch state is {}'.format(initial_state))
+        while True:
+            try:
+                current_state = switch.value()
+                if not current_state == initial_state:
+                    lamp.toggle()
+                    initial_state = current_state
+                    print('Current switch state is {}'.format(initial_state))
+                time.sleep_ms(300)
+            except Exception as e:
+                print(('Caught exception {exception}, waiting {timeout} '
+                       'seconds').format(exception=e,
+                                         timeout=exception_timeout))
+                time.sleep(exception_timeout)
+    except Exception as e:
+        print(('Caught exception, {}'
+               'resetting in {} seconds...').format(e, exception_timeout))
+        time.sleep(exception_timeout)
+        machine.reset()
+
+
+if __name__ == '__main__':
+    main()

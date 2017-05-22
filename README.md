@@ -61,6 +61,7 @@ If project is based on an esp8266 01s (Current documentation mentions this case.
 
 * [220v to 3.3v power converted](https://www.aliexpress.com/item/AC-220-V-to-3-3-V-DC-power-supply-module-transformer-module-is-completely-isolated/32768604824.html)
 
+* 10KΩ Resistance
 
 # Physical Connection
 
@@ -69,7 +70,8 @@ You can see pictures of the connectivity under the [images](images) directory.
 
 # Schematics
 
-Images in png format and a fritzing project for each case can be found under [schematics](schematics)
+Images in png format and a fritzing project for each case can be found under 
+[schematics](schematics) but the core connectivity schematic is ![alt text](schematics/esp8266_01s_schem.png "final state schematic")
 
 
 # Configuration
@@ -85,6 +87,7 @@ need [ampy](https://github.com/adafruit/ampy)
 Required tools:
 
 #esp8266-01s specific
+
 To flash the esp8266-01s a component to connect it to usb is required.
 Remember that it is 3.3v power and *will* fry with 5v.
 

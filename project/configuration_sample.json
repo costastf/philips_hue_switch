@@ -1,6 +1,10 @@
 {"network_ssid": "NETWORK_SSID",
  "network_password": "NETWORK_PASSWORD",
- "network_reset_timeout": 30,
+ "network_reset_timeout": "SECONDS",
  "hue_bridge_ip": "HUE_BRIDGE_IP",
  "hue_user_token": "HUE_USER_TOKEN",
- "lamp_name": "LAMP_NAME"}
+ "lamp_name": "LAMP_NAME",
+ "exception_reset_timeout": "SECONDS",
+ "pin_number": "GPIO_NUMBER_INTEGER",
+ "pin_supports_pull_up": "BOOLEAN"
+}
