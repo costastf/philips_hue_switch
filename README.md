@@ -53,15 +53,15 @@ If project is based on a wemos D1 mini
 
 * [wemos d1 mini](https://www.aliexpress.com/item/D1-mini-Mini-NodeMcu-4M-bytes-Lua-WIFI-Internet-of-Things-development-board-based-ESP8266-by/32644199530.html)
 
-* [220v to 5v power converted](https://www.aliexpress.com/item/5V-700mA-3-5W-AC-DC-Precision-Buck-Converter-AC-220v-to-5v-DC-step-down/32649591757.html)
+* [220v to 5v power converter](https://www.aliexpress.com/item/5V-700mA-3-5W-AC-DC-Precision-Buck-Converter-AC-220v-to-5v-DC-step-down/32649591757.html)
 
 If project is based on an esp8266 01s (Current documentation mentions this case.)
 
 * [esp8266-01s](https://www.aliexpress.com/item/New-Version-ESP8266-ESP-01-ESP01-Serial-Wireless-WIFI-Module-Transceiver-Receiver-Board-for-Internet-of/32799606069.html)
 
-* [220v to 3.3v power converted](https://www.aliexpress.com/item/AC-220-V-to-3-3-V-DC-power-supply-module-transformer-module-is-completely-isolated/32768604824.html)
+* [220v to 3.3v power converter](https://www.aliexpress.com/item/AC-220-V-to-3-3-V-DC-power-supply-module-transformer-module-is-completely-isolated/32768604824.html)
 
-* 10KΩ Resistance
+* 2x 10KΩ Resistance
 
 # Physical Connection
 
