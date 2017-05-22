@@ -5,6 +5,6 @@
  "hue_user_token": "HUE_USER_TOKEN",
  "lamp_name": "LAMP_NAME",
  "exception_reset_timeout": "SECONDS",
- "pin_number": "GPIO_NUMBER_INTEGER",
+ "pin_number": "PIN_NUMBER_INTEGER",
  "pin_supports_pull_up": "BOOLEAN"
 }

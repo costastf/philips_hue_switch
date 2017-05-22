@@ -77,6 +77,8 @@ Images in png format and a fritzing project for each case can be found under
 # Configuration
 
  Rename configuration_sample.json to configuration.json and edit accordingly.
+ If the board used is a wemos D1 mini the pin should be set to gpio3 (D0) 
+ whereas if the board used is the esp8266-01s the pin should be set to 3 (RX)
   Everything else should just work out of the box.
 
 # Flashing micropython
