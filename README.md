@@ -71,7 +71,7 @@ You can see pictures of the connectivity under the [images](images) directory.
 # Schematics
 
 Images in png format and a fritzing project for each case can be found under 
-[schematics](schematics) but the core connectivity schematic is ![alt text](schematics/esp8266_01s_schem.png "final state schematic")
+[schematics](schematics).
 
 
 # Configuration
@@ -88,7 +88,7 @@ need [ampy](https://github.com/adafruit/ampy)
 
 Required tools:
 
-#esp8266-01s specific
+# esp8266-01s specific
 
 To flash the esp8266-01s a component to connect it to usb is required.
 Remember that it is 3.3v power and *will* fry with 5v.
@@ -104,19 +104,25 @@ appropriate holes as can be seen [here](images/IMG_20170519_095341.jpg). This
  of course can get pretty old pretty quick if you have a few boards to flash.
 
 
-  The right solution is to add a jumper between ground and d0 as can be seen
+  A better solution is to add a jumper between ground and d0 as can be seen
   [here](images/IMG_20170518_141529.jpg) and [here](images/IMG_20170518_165919.jpg)
 and choose the appropriate mode of booting by using the jumper cap or not.
 
 Of course in order for the project to work properly when used the esp8266-01s
- has to be booted with d0 high, so it does not enter in flash mode.
+ has to be booted with d0 and d1 high, so it does not enter in flash mode.
 
  In order to fix this a 10K pull up resistor has to be connected between d0
- and VCC (3.3v) so the pin is kept high and boots into running mode even if
- rebooted.
+ and VCC (3.3v) and between d1 and VCC so the pins are kept high and the 
+ board boots into running mode even if rebooted.In order to not make the 
+ board unflashable by permanent pull ups I have installed jumpers on the pull
+  ups so the board can boot into flash but also be able to be programmed. Images
+   of this connection can be found under [images](images) and the final end 
+   result with the two pull ups installed is [this](images/IMG_20170522_210237.jpg)
 
  In order for the switch to not interfere with the booting process we are 
- using RX (gpio03) as input pulled high through software.
+ using RX (gpio03) as input pulled high through software. That of course will
+  interfere with the serial console so depending on the state of the switch 
+  when the board boots you might not have access to the serial console.
 
 
 # common for both wemos d1 mini and esp8266-01s
